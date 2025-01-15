@@ -1,0 +1,42 @@
+.container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden; 
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../AdditionalFilesDirectory/business_stackedbar.jpg'); 
+  background-size: cover; 
+  background-position: center; 
+  opacity: 0.2; 
+  z-index: 0; 
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  color: rgba(255, 255, 255, 1); 
+  font-family: 'Dancing Script', cursive;
+  font-weight: bold;
+  z-index: 2; 
+  text-shadow: 2px 2px 0 #ff6347, 
+               4px 4px 0 #ffd700, 
+               6px 6px 0 #90ee90; 
+}
+
+#chart-container {
+  position: relative;
+  z-index: 1; 
+  height: 100%;
+  width: 100%;
+}
