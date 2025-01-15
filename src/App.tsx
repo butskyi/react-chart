@@ -1,6 +1,6 @@
 import { Route } from 'react-router-dom';
 import './App.css';
-import Chart from './Components/CodeDirectory/1/465326-1';
+import Chart from './Components/CodeDirectory/437242-lollipop';
 //
 
 import { Routes } from 'react-router-dom';

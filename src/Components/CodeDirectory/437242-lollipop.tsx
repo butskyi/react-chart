@@ -57,7 +57,7 @@ const VerticalLollipopChart: React.FC = () => {
             .style("font-family", "'Courgette', cursive")
             .attr("font-size", "48px")
             .attr("fill", "#903234")
-            .style("text-shadow", "2px 2px 4px rgba(0, 0, 0, 0.5)");
+            .style("text-shadow", "12px 12px 14px rgba(0, 0, 0, 0.5)");
 
         svg
             .append("g")
@@ -136,7 +136,7 @@ const VerticalLollipopChart: React.FC = () => {
                 display: "flex", // Use flexbox to center the content
                 justifyContent: "center", // Horizontally center the content
                 alignItems: "center", // Vertically center the content
-                height: "100vh", // Ensure the container takes the full height of the viewport
+                height: "110vh", // Ensure the container takes the full height of the viewport
                 width: "100vw", // Ensure the container takes the full width of the viewport
                 position: "relative", // Allow absolute positioning of the background
             }}
