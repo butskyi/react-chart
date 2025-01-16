@@ -2,15 +2,15 @@ import React from "react";
 import ReactECharts from "echarts-for-react";
 import * as echarts from "echarts";
 import GoogleFontLoader from "react-google-font-loader";
-import cakeImg from "../../AdditionalFilesDirectory/cake.jpg"; // Ensure this path is correct
+import cakeImg from "../../AdditionalFilesDirectory/cake_product.jpg"; // Ensure this path is correct
 
-// Define the SplitData type
+
 interface SplitData {
-  categoryData: string[]; // Cake type names
-  values: number[][]; // Production values for each cake
+  categoryData: string[]; 
+  values: number[][]; 
 }
 
-// Define color pairs for different cake types
+
 const colorPairs = [
   { up: "#FF8C00", down: "#FFA500" },
   { up: "#FF6347", down: "#FF4500" },
@@ -20,7 +20,7 @@ const colorPairs = [
   { up: "#87CEFA", down: "#4682B4" },
 ];
 
-// Data with cake types and production values
+
 const data0: SplitData = splitData([
   ["Chocolate Cake", 100, 120, 90, 115],
   ["Vanilla Cake", 80, 110, 70, 100],
@@ -35,8 +35,8 @@ function splitData(rawData: [string, number, number, number, number][]): SplitDa
   const values: number[][] = [];
 
   for (const item of rawData) {
-    categoryData.push(item[0]); // Cake type as category
-    values.push([item[1], item[2], item[3], item[4]]); // Production values for each cake
+    categoryData.push(item[0]);
+    values.push([item[1], item[2], item[3], item[4]]);
   }
 
   return { categoryData, values };

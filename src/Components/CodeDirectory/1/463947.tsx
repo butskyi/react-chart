@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import * as d3 from "d3";
 import GoogleFontLoader from "react-google-font-loader";
-import backimg from '../../AdditionalFilesDirectory/music_VerticalLollipopChart.jpg'; 
+import backimg from '../../AdditionalFilesDirectory/music_LollipopChart.jpg'; 
 
 interface MusicianPerformance {
     musician: string;
@@ -10,7 +10,6 @@ interface MusicianPerformance {
 
 const VerticalLollipopChart: React.FC = () => {
     const svgRef = useRef<SVGSVGElement | null>(null);
-
     const data: MusicianPerformance[] = [
         { musician: "Elvis Presley", albumsSold: 500 },
         { musician: "Michael Jackson", albumsSold: 350 },
@@ -26,28 +25,25 @@ const VerticalLollipopChart: React.FC = () => {
 
     useEffect(() => {
         if (!svgRef.current) return;
-    
         const svg = d3.select(svgRef.current);
         const width = 2024;
-        const height = 1224;
-        const margin = { top: 150, right: 40, bottom: 160, left: 300 };
+        const height = 1154;
+        const margin = { top: 150, right: 140, bottom: 100, left: 300 };
     
         svg.selectAll("*").remove();
     
         const x = d3
-            .scaleLinear()
-            .domain([0, 700])
-            .range([margin.left, width - margin.right-50]);
-    
-        const y = d3
             .scaleBand()
             .domain(data.map((d) => d.musician))
-            .range([height - margin.bottom, margin.top])
+            .range([margin.left, width - margin.right])
             .padding(0.4);
     
-        svg
-            .attr("width", width)
-            .attr("height", height);
+        const y = d3
+            .scaleLinear()
+            .domain([0, 700])
+            .range([height - margin.bottom, margin.top]);
+    
+        svg.attr("width", width).attr("height", height);
     
         svg
             .append("text")
@@ -59,36 +55,40 @@ const VerticalLollipopChart: React.FC = () => {
             .attr("font-size", "85")
             .attr("fill", "#C8FF00FF")
             .attr("stroke", "#B3AC4D00")
-            .style("text-shadow", "4px 2px 4px rgba(0.6, 0, 0, 0.5)");
+            .style("text-shadow", "14px 12px 4px rgba(0.6, 0, 0, 0.5)");
     
-        
+        // X-axis (Musicians)
         svg
         .append("g")
         .attr("transform", `translate(0,${height - margin.bottom})`)
-        .call(d3.axisBottom(x).ticks(10))
+        .call(d3.axisBottom(x))
         .selectAll("text")
-        .attr("transform", "rotate(0)")
-        .style("text-anchor", "start")
+        .attr("transform", "rotate(30)") // Rotate labels for better fit
+        .attr("text-anchor", "start") // Align labels correctly after rotation
+        .attr("dx", "0.5em") // Horizontal adjustment for rotated labels
+        .attr("dy", "0.75em") // Adjust vertical spacing
         .style("font-family", "'Courgette', cursive")
         .attr("font-size", "40px")
-        .attr("fill", "#FD11EAFF")
+        .attr("fill", "#3A0A36FF")
         .attr("stroke", "#000000")
         .attr("stroke-width", "1px");
-
-        
-        svg
-        .append("g")
-        .attr("transform", `translate(${margin.left},0)`)
-        .call(d3.axisLeft(y))
-        .call((g) => g.select(".domain").remove())
-        .style("font-family", "'Courgette', cursive")
-        .selectAll("text")
-        .attr("font-size", "40")
-        .attr("fill", "#FF4800FF")
-        .attr("stroke", "#4E4A4AFF")
-        .attr("stroke-width", "1px");
+    
 
     
+        // Y-axis (Albums Sold)
+        svg
+            .append("g")
+            .attr("transform", `translate(${margin.left},0)`)
+            .call(d3.axisLeft(y).ticks(10))
+            .call((g) => g.select(".domain").remove())
+            .style("font-family", "'Courgette', cursive")
+            .selectAll("text")
+            .attr("font-size", "40")
+            .attr("fill", "#FF4800FF")
+            .attr("stroke", "#4E4A4AFF")
+            .attr("stroke-width", "1px");
+    
+        // Gradient for circles
         const gradient = svg
             .append("defs")
             .append("radialGradient")
@@ -97,50 +97,32 @@ const VerticalLollipopChart: React.FC = () => {
             .attr("cy", "50%")
             .attr("r", "50%");
     
-        gradient.append("stop")
-            .attr("offset", "0%")
-            .attr("stop-color", "#FFFFFFFF");
+        gradient.append("stop").attr("offset", "0%").attr("stop-color", "#FFFFFFFF");
+        gradient.append("stop").attr("offset", "100%").attr("stop-color", "#0DB5F8FF");
     
-        gradient.append("stop")
-            .attr("offset", "100%")
-            .attr("stop-color", "#0DB5F8FF");
-    
+        // Lollipop Lines
         svg
             .selectAll("line.lollipop-line")
             .data(data)
             .join("line")
             .attr("class", "lollipop-line")
-            .attr("x1", margin.left)
-            .attr("x2", (d) => x(d.albumsSold))
-            .attr("y1", (d) => y(d.musician)! + y.bandwidth() / 2)
-            .attr("y2", (d) => y(d.musician)! + y.bandwidth() / 2)
+            .attr("x1", (d) => x(d.musician)! + x.bandwidth() / 2)
+            .attr("x2", (d) => x(d.musician)! + x.bandwidth() / 2)
+            .attr("y1", height - margin.bottom)
+            .attr("y2", (d) => y(d.albumsSold))
             .attr("stroke", "#FC20CCFF")
             .attr("stroke-width", 8);
     
+        // Lollipop Circles
         svg
             .selectAll("circle.lollipop-circle")
             .data(data)
             .join("circle")
             .attr("class", "lollipop-circle")
-            .attr("cx", (d) => x(d.albumsSold))
-            .attr("cy", (d) => y(d.musician)! + y.bandwidth() / 2)
+            .attr("cx", (d) => x(d.musician)! + x.bandwidth() / 2)
+            .attr("cy", (d) => y(d.albumsSold))
             .attr("r", 8)
             .attr("fill", "url(#circle-gradient)");
-    
-        const xTicks = x.ticks(10);
-    
-        svg
-            .selectAll("line.vertical-line")
-            .data(xTicks)
-            .join("line")
-            .attr("class", "vertical-line")
-            .attr("x1", (d) => x(d))
-            .attr("x2", (d) => x(d))
-            .attr("y1", margin.top)
-            .attr("y2", height - margin.bottom)
-            .attr("stroke", "#EE1FBAFF")
-            .attr("stroke-width", 1)
-            .attr("stroke-dasharray", "18,18");
     }, [data]);
 
     return (
@@ -177,11 +159,11 @@ const VerticalLollipopChart: React.FC = () => {
                     backgroundSize: "cover",
                     backgroundPosition: "top",
                     backgroundRepeat: "no-repeat",
-                    opacity: 0.4,
+                    opacity: 0.6,
                     zIndex: -100,
                 }}
             ></div>
-            <svg ref={svgRef} style={{ minWidth: "1224px", minHeight: "80vh" }}></svg>
+            <svg ref={svgRef} style={{ minWidth: "1024px", minHeight: "80vh" }}></svg>
         </div>
     );
 };

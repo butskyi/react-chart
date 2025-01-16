@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 import GoogleFontLoader from 'react-google-font-loader';
-import backimg from "../../AdditionalFilesDirectory/boy_girl_growth.jpg"; // Use a relevant background image
+import backimg from "../../AdditionalFilesDirectory/boy_girl_growth.jpg"; 
 
 const kernelDensityEstimation = (data: number[], bandwidth: number, steps: number = 100) => {
   const minVal = Math.min(...data);
@@ -28,13 +28,13 @@ const GrowthKDEPlot: React.FC = () => {
     if (chartRef.current) {
       const myChart = echarts.init(chartRef.current);
 
-      // Example dataset for boys' height growth (in cm)
-      const dataBoys = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140]; // Growth in height for boys
+  
+      const dataBoys = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140]; 
       const bandwidthBoys = 4;
       const densityBoys = kernelDensityEstimation(dataBoys, bandwidthBoys);
 
-      // Example dataset for girls' height growth (in cm)
-      const dataGirls = [48, 58, 68, 78, 88, 98, 108, 118, 128, 138]; // Growth in height for girls
+      
+      const dataGirls = [48, 58, 68, 78, 88, 98, 108, 118, 128, 138]; 
       const bandwidthGirls = 4;
       const densityGirls = kernelDensityEstimation(dataGirls, bandwidthGirls);
 

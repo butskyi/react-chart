@@ -2,7 +2,7 @@ import React from "react";
 import ReactECharts from "echarts-for-react";
 import GoogleFontLoader from "react-google-font-loader";
 import '../index.css';
-import backImg from '../../AdditionalFilesDirectory/clothes.jpg'; // Replace with your image path
+import backImg from '../../AdditionalFilesDirectory/clothes.jpg'; 
 
 const SunburstChart = () => {
   const data = {
@@ -10,7 +10,7 @@ const SunburstChart = () => {
     children: [
       {
         name: "Men's Wear",
-        itemStyle: { color: "#FF5733" }, // Color for Men's Wear
+        itemStyle: { color: "#FF5733" }, 
         children: [
           { name: "Nike", value: 40, itemStyle: { color: "#C70039" } },
           { name: "Adidas", value: 30, itemStyle: { color: "#FFC300" } },
@@ -19,7 +19,7 @@ const SunburstChart = () => {
       },
       {
         name: "Women's Wear",
-        itemStyle: { color: "#33FF57" }, // Color for Women's Wear
+        itemStyle: { color: "#33FF57" }, 
         children: [
           { name: "Zara", value: 50, itemStyle: { color: "#581845" } },
           { name: "H&M", value: 35, itemStyle: { color: "#900C3F" } },
@@ -28,7 +28,7 @@ const SunburstChart = () => {
       },
       {
         name: "Children's Wear",
-        itemStyle: { color: "#3357FF" }, // Color for Children's Wear
+        itemStyle: { color: "#3357FF" }, 
         children: [
           { name: "Gap", value: 60, itemStyle: { color: "#FF33A1" } },
           { name: "Next", value: 25, itemStyle: { color: "#33FFF7" } },
@@ -37,7 +37,7 @@ const SunburstChart = () => {
       },
       {
         name: "Luxury Wear",
-        itemStyle: { color: "#FF33D4" }, // Color for Luxury Wear
+        itemStyle: { color: "#FF33D4" },
         children: [
           { name: "Gucci", value: 60, itemStyle: { color: "#C70039" } },
           { name: "Louis Vuitton", value: 30, itemStyle: { color:"#FFC300"} },
@@ -83,7 +83,7 @@ const SunburstChart = () => {
           title: {
             text: "{gradient| Famous Clothing Brands in the World}",
             left: "center",
-            top: "120", // Adjusted as needed
+            top: "120",
             textStyle: {
               rich: {
                 gradient: {
@@ -91,7 +91,7 @@ const SunburstChart = () => {
                   fontFamily: "Dancing Script,cursive",
                   fontWeight: "bold",
                   lineHeight: "10",
-                  textShadow: "4px 7px 2px rgba(1, 0.5, 0.5, 0.8)", // Shadow color and offset
+                  textShadow: "4px 7px 2px rgba(1, 0.5, 0.5, 0.8)", 
                   background: "linear-gradient(60deg, #9B0A83FF, #A5A5A5FF)",
                   color: "#FF0464FF",
                   padding: [5, 5, 0, 0],
@@ -118,19 +118,19 @@ const SunburstChart = () => {
             {
               type: "sunburst",
               data: data.children,
-              radius: [10, "83%"], // Keep as per your preference
-              center: ["50%", "56%"], // Retain this setting
+              radius: [10, "83%"], 
+              center: ["50%", "56%"], 
               label: {
                 rotate: "tangential",
                 color: "#0F0F0FFF",
                 fontFamily: "Roboto",
                 fontWeight: "bold",
-                fontSize: 30,
+                fontSize: 35,
               },
               itemStyle: {
                 borderColor: "#fff",
                 borderWidth: 2,
-                opacity: 0.7, // Apply opacity here
+                opacity: 0.7, 
               },
               emphasis: {
                 focus: "ancestor",
@@ -138,7 +138,7 @@ const SunburstChart = () => {
             },
           ],
         }}
-        style={{ height: "100vh", width: "100%" }} // Increase to 100vh to avoid cutting off
+        style={{ height: "100vh", width: "100%" }}
       />
     </div>
   );

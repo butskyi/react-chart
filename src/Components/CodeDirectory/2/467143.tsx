@@ -5,7 +5,7 @@ import backimg from '../../AdditionalFilesDirectory/richman.jpg';
 
 interface WealthyIndividual {
     name: string;
-    netWorth: number; // in billions
+    netWorth: number; 
 }
 
 const VerticalLollipopChart: React.FC = () => {
@@ -36,7 +36,7 @@ const VerticalLollipopChart: React.FC = () => {
 
         const x = d3
             .scaleLinear()
-            .domain([0, 250]) // Adjusted for net worth in billions
+            .domain([0, 250])
             .range([margin.left, width - margin.right - 50]);
 
         const y = d3

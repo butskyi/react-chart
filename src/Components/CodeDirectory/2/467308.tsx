@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import GoogleFontLoader from "react-google-font-loader";
 import * as echarts from "echarts";
-import backimg from "../../AdditionalFilesDirectory/sports_car.jpg"; // Replace with a relevant car image
+import backimg from "../../AdditionalFilesDirectory/sports_car.jpg";
 
-const App: React.FC = () => {
+const CarPerfomanceFunnel: React.FC = () => {
   const chartDom = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const App: React.FC = () => {
             color: "#4E0303FF",
             fontSize: 75,
             fontWeight: "bold",
-            fontFamily: "'Stork', cursive", // Use the Stork font for the title
+            fontFamily: "'Stork', cursive",
             textShadowColor: "#fff",
             textShadowBlur: 5,
             textShadowOffsetX: 2,
@@ -60,7 +60,7 @@ const App: React.FC = () => {
             color: "#141010FF",
             fontSize: 26,
             padding: 15,
-            fontFamily: "'Stork', cursive", // Apply "Stork" to the legend text
+            fontFamily: "'Stork', cursive", 
           },
         },
         series: [
@@ -74,9 +74,9 @@ const App: React.FC = () => {
               formatter: function (params) {
                 return params.name.split(" - ")[1] + "\nExp: " + params.value + "%";
               },
-              fontSize: 26,
+              fontSize: 30,
               color: "white",
-              fontFamily: "'Stork', cursive", // Use Stork font for series labels
+              fontFamily: "'Stork', cursive", 
               rotate: 0,
               align: "left",
             },
@@ -117,7 +117,7 @@ const App: React.FC = () => {
               },
               fontSize: 36,
               color: "#C8FF01FF",
-              fontFamily: "'Stork', cursive", // Use Stork font for series labels
+              fontFamily: "'Stork', cursive",
             },
             itemStyle: {
               opacity: 0.7,
@@ -148,7 +148,7 @@ const App: React.FC = () => {
   const containerStyle: React.CSSProperties = {
     width: "100%",
     height: "100vh",
-    backgroundImage: `url(${backimg})`, // Consider replacing this image with a car-related image
+    backgroundImage: `url(${backimg})`, 
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -167,7 +167,7 @@ const App: React.FC = () => {
             weights: [400, "400i"],
           },
           {
-            font: "Stork", // Load the Stork font
+            font: "Stork", 
             weights: [400],
           },
         ]}
@@ -184,4 +184,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default CarPerfomanceFunnel;

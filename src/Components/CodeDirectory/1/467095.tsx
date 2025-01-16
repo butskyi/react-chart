@@ -28,9 +28,9 @@ const PlayerProfitKDEPlot: React.FC = () => {
     if (chartRef.current) {
       const myChart = echarts.init(chartRef.current);
 
-      // Define yearly profits of top football players in millions
-      const playerProfits = [218, 135, 84.31, 69, 79.71]; // Yearly profits
-      const bandwidth = 10; // Adjust as necessary
+      
+      const playerProfits = [218, 135, 84.31, 69, 79.71]; 
+      const bandwidth = 10;
       const density = kernelDensityEstimation(playerProfits, bandwidth);
 
       const option: echarts.EChartsOption = {
@@ -106,7 +106,7 @@ const PlayerProfitKDEPlot: React.FC = () => {
               color:'rgba(255, 165, 0, 0.8)',
             },
             lineStyle:{
-              width: 3, // Ensure this is a number
+              width: 3, 
               color:'#AF7405FF',
             },
           }
@@ -154,7 +154,7 @@ const PlayerProfitKDEPlot: React.FC = () => {
   );
 };
 
-// Explicitly typing the children prop
+
 const Container: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
     <div style={{
         position:'relative', 

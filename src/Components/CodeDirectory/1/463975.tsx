@@ -46,8 +46,8 @@ const FootballTeamsPerformanceHeatmap: React.FC = () => {
         grid: {
             height: '80%',
             top:'9%',
-            right:'10%',
-            left:'20%',
+            right:'17%',
+            left:'17%',
         },
         xAxis: {
             type:'category',
@@ -87,27 +87,36 @@ const FootballTeamsPerformanceHeatmap: React.FC = () => {
                 margin:10,
             },
         },
-        visualMap:{
-            min :0,
-            max :40,
-            calculable :true,
-            orient :'vertical',
-            right :10,
-            bottom :'20%',
-            itemHeight :1000,
-            inRange:{
-                color:[
+        visualMap: {
+            type: 'piecewise', 
+            min: 0,
+            max: 40,
+            pieces: [
+                { min: 35, max: 40, label: '35-40: Outstanding ' },
+                { min: 30, max: 34, label: '30-34: Excellent ' },
+                { min: 25, max: 29, label: '25-29: Good ' },
+                { min: 20, max: 24, label: '20-24: Average ' },
+                { min: 10, max: 19, label: '10-19: Below ' },
+                { min: 0, max: 9, label: '0-9: Poor ' },
+            ],
+            orient: 'vertical',
+            right: 50,
+            bottom: '20%',
+            itemHeight: 150,
+            textStyle: {
+                fontSize: 30,
+                color: '#000',
+            },
+            inRange: {
+                color: [
                     '#F2D7D5', '#F5B7B1', '#F1948A', '#EC7063', '#E74C3C', 
-                    '#CB4335', '#A93226', '#F9E79F', '#F7DC6F', '#F4D03F',
-                    '#01D5FAFF', '#20DACAFF', '#20BD54FF', '#7763ECFF', '#E73CCBFF', 
-                    
+                    '#DE9A08FF', '#8F4D13FF', '#F9E79F', '#F7816FFF', '#F4573FFF',
+                    '#01D5FAFF', '#20DACAFF', '#52BD20FF', '#7763ECFF', '#E73CCBFF',
                 ],
             },
-            textStyle:{
-                fontSize :40,
-                color :'#000000',
-            },
         },
+        
+        
         series:[
             {
                 name :'Football Performance',
@@ -150,11 +159,11 @@ const FootballTeamsPerformanceHeatmap: React.FC = () => {
                     backgroundImage:`url(${backImg})`,
                     backgroundSize:'cover',
                     backgroundPosition:'center',
-                    opacity:.3,
+                    opacity:.25,
                     zIndex:'10'
                  }}
              ></div>
-             <ReactECharts option={option} style={{ height:'100%', width:'90%' }} />
+             <ReactECharts option={option} style={{ height:'100%', width:'100%' }} />
          </div>
      );
 };

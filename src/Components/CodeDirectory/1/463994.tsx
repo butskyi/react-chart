@@ -1,8 +1,8 @@
 import React from "react";
 import { Chart } from "react-google-charts";
-import backImg from '../../AdditionalFilesDirectory/university_geo_chart_background.jpg'; 
+import backImg from '../../AdditionalFilesDirectory/university_geo_chart_background.jpg';
 
-const UniversityGeoChart: React.FC = () => {
+const MilitaryGeoChart: React.FC = () => {
   const data = [
     ["Latitude", "Longitude", "University Rank", { role: "tooltip", type: "string" }],
     [40.7128, -74.0060, 1, "Harvard University: Rank 1"],
@@ -21,25 +21,34 @@ const UniversityGeoChart: React.FC = () => {
     region: "world",
     displayMode: "markers",
     colorAxis: { colors: ["#FFA07A", "#DC143C", "#8B0000"] },
-    backgroundColor: 'transparent', 
+    sizeAxis: { minValue: 1, maxValue: 1 },
+    backgroundColor: "transparent",
     datalessRegionColor: "#2F4F4F",
     tooltip: {
       isHtml: true,
       textStyle: {
-        color: "white",
-        fontSize: 35,
+        color: "red",
+        fontSize: 20,
       },
       showColorCode: true,
       trigger: "focus",
     },
+    legend: {
+      textStyle: {
+        color: "white", 
+        fontSize: 38,  
+      },
+      alignment: "center", 
+    },
     chartArea: {
-      backgroundColor: { fill:'transparent' },
-      left: '10%',
-      top: '10%',
-      width: '100%',
-      height: '80%'
+      backgroundColor: { fill: 'transparent' },
+      left: '5%',
+      top: '5%',
+      width: '90%',
+      height: '90%',
     },
   };
+  
 
   return (
     <div style={{
@@ -66,7 +75,7 @@ const UniversityGeoChart: React.FC = () => {
         position: "absolute",
         width: "100%",
         height: "100%",
-        background: "linear-gradient(135deg, #1a1a1a, #4F95A8FF)",
+        background: "linear-gradient(135deg, #1a1a1a, #2c3e50)",
         backgroundSize: "400% 400%",
         animation: "gradientAnimation 15s ease infinite",
         zIndex: -1,
@@ -79,12 +88,11 @@ const UniversityGeoChart: React.FC = () => {
         padding: "2rem",
         backdropFilter: "blur(8px)",
         borderRadius: "15px",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundColor: "rgba(0.4, 0.5, 0.6, 0.3)",
       }}>
         <h2 style={{
-          fontSize: "5.5rem",
-          fontFamily:"'Courgette', cursive",
-          marginBottom: "1.0rem",
+          fontSize: "5rem",
+          marginBottom: "1.5rem",
           textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
         }}>Top Universities in the World (2025)</h2>
 
@@ -92,7 +100,7 @@ const UniversityGeoChart: React.FC = () => {
           chartType="GeoChart"
           data={data}
           options={options}
-          width="70vw"
+          width="80vw"
           height="70vh"
         />
       </div>
@@ -100,4 +108,4 @@ const UniversityGeoChart: React.FC = () => {
   );
 }
 
-export default UniversityGeoChart;
+export default MilitaryGeoChart;
